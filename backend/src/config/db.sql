@@ -1,0 +1,8 @@
+CREATE DATABASE IF NOT EXISTS "desafiodb";
+USE "desafiodb";
+
+CREATE TABLE usuarios (id INT AUTO_INCREMENT PRIMARY KEY, nome VARCHAR(100) NOT NULL, email VARCHAR(100) UNIQUE NOT NULL, foto_perfil TEXT, data_nascimento DATE, senha VARCHAR(255) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+CREATE TABLE eventos (id INT AUTO_INCREMENT PRIMARY KEY, usuario_id INT NOT NULL, nome VARCHAR(100) NOT NULL, data DATE NOT NULL, status ENUM('pendente', 'concluido', 'cancelado') DEFAULT 'pendente', descricao TEXT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE);
+
+CREATE INDEX idx_usuario_email ON usuarios(email);
+CREATE INDEX idx_eventos_usuario_data ON eventos(usuario_id, data);

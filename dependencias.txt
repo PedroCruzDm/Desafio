@@ -1,0 +1,4 @@
+npm install sass
+npm install react-router-dom @types/react-router-dom
+npm install react-router-dom@latest
+npm install jsonwebtoken bcryptjs
