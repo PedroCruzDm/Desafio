@@ -1,7 +1,7 @@
 // src/auth.js
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const db = require('./config/db'); // Caminho para seu db.js
+const db = require('./config/db');
 const dotenv = require('dotenv');
 dotenv.config();
 
