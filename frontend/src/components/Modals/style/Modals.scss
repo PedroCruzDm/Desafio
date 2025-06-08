@@ -1,0 +1,133 @@
+.modal_event {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_container {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+        padding: 2.5rem 2rem;
+        min-width: 340px;
+        max-width: 96vw;
+        width: 420px;
+        position: relative;
+        animation: modalFadeIn 0.3s;
+    }
+
+    &_header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0;
+            color: #222;
+        }
+    }
+
+    &_close {
+        background: transparent;
+        border: none;
+        font-size: 1.6rem;
+        cursor: pointer;
+        color: #888;
+        transition: color 0.2s;
+
+        &:hover {
+            color: #e74c3c;
+        }
+    }
+
+    &_body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+
+        p {
+            margin: 0.2rem 0 0.1rem 0;
+            font-size: 1rem;
+            color: #444;
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border 0.2s;
+            margin-bottom: 0.3rem;
+
+            &:focus {
+                border-color: #3498db;
+                outline: none;
+            }
+        }
+
+        input[type="color"] {
+            padding: 0.2rem;
+            width: 48px;
+            height: 36px;
+            border: none;
+            background: none;
+        }
+
+        textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+    }
+
+    &_buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        margin-top: 1.2rem;
+    }
+
+    &_save {
+        background: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 0.6rem 1.3rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+            background: #217dbb;
+        }
+    }
+
+    &_cancel {
+        background: #f4f4f4;
+        color: #333;
+        border: none;
+        border-radius: 4px;
+        padding: 0.6rem 1.3rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+            background: #e0e0e0;
+        }
+    }
+}
+
+// Animation for modal appearance
+@keyframes modalFadeIn {
+    from { transform: translateY(-40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
