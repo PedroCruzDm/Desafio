@@ -50,4 +50,6 @@ eagle.epf
 # file locks introduced since 7.x
 *.lck
 
-./backend/.env
+# Arquivos de ambiente com informações sensíveis
+.env
+backend/.env
