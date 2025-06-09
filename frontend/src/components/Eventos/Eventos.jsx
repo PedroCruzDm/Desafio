@@ -123,7 +123,8 @@ const Eventos = () => {
               </td>
             </tr>
           ))}
-        </tbody>      </table>
+        </tbody>
+      </table>
       
       <EventoModalAction
         open={modalActionOpen}

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Eventos from "../components/Eventos/Eventos.jsx"
+import Dashboard from "../components/Dashboard/Dashboard.jsx"
+import Equipes from "../components/Equipes/Equipes.jsx"
 const UserProfile = ({ usuario }) => (
     <div style={{display: "flex", flexDirection: "column", alignItems: "center", marginTop: "2rem"}}>
         <div style={{display: "grid", gridTemplateColumns: "34px 1fr", alignItems: "center", gap: "0.75rem", width: "100%",}}>
@@ -74,8 +76,8 @@ const Sidebar = ({ usuario, onLogout, onMenuClick, onMenuDoubleClick, activeItem
 
 export const Menu = () => {
     const [usuario, setUsuario] = useState(null);
-    const [activeItem, setActiveItem] = useState(null);
-    const [showInitialContent, setShowInitialContent] = useState(true);
+    const [activeItem, setActiveItem] = useState("dashboard");
+    const [showInitialContent, setShowInitialContent] = useState(false);
 
     useEffect(() => {
         const usuarioStorage = localStorage.getItem("usuario");
@@ -101,15 +103,13 @@ export const Menu = () => {
             setActiveItem(null);
             setShowInitialContent(true);
         }
-    };
-
-    // Componente placeholder para cada item do menu
+    };    // Componente placeholder para cada item do menu
     const menuComponents = {
-        dashboard: () => <div><h2>Dashboard</h2><p>Conteúdo do Dashboard.</p></div>,
+        dashboard: () => <div><Dashboard /></div>,
         eventos: () => <div>
             <Eventos />
         </div>,
-        equipes: () => <div><h2>Equipes</h2><p>Conteúdo de Equipes.</p></div>,
+        equipes: () => <div><Equipes /></div>,
         inscricao: () => <div><h2>Inscrições</h2><p>Conteúdo de Inscrições.</p></div>,
     };
 
