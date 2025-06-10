@@ -131,3 +131,459 @@
     from { transform: translateY(-40px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+/* Estilos para os modais de equipes */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+    padding: 2rem;
+    min-width: 340px;
+    max-width: 96vw;
+    width: 500px;
+    position: relative;
+    animation: modalFadeIn 0.3s;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #343a40;
+    margin: 0;
+}
+
+.close-button {
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #6c757d;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #dc3545;
+}
+
+.modal-body {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.15s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #1976d2;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.input-error {
+    border-color: #dc3545 !important;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+.add-member-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.add-member-container input {
+    flex: 1;
+}
+
+.add-member-button {
+    background-color: #e9ecef;
+    color: #495057;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.add-member-button:hover {
+    background-color: #dee2e6;
+}
+
+.members-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.member-item {
+    display: flex;
+    align-items: center;
+    background-color: #e9ecef;
+    border-radius: 16px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+}
+
+.remove-member-button {
+    background: none;
+    border: none;
+    color: #6c757d;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 0.3rem;
+    padding: 0 0.2rem;
+    transition: color 0.15s ease;
+}
+
+.remove-member-button:hover {
+    color: #dc3545;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.cancel-button,
+.save-button,
+.delete-confirm-button,
+.close-view-button {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cancel-button {
+    background-color: #f8f9fa;
+    color: #495057;
+    border: 1px solid #ced4da;
+}
+
+.cancel-button:hover {
+    background-color: #e9ecef;
+}
+
+.save-button {
+    background-color: #ff7f27; /* Orange - primary color */
+    color: white;
+    border: none;
+    box-shadow: 0 2px 4px rgba(255, 127, 39, 0.2);
+}
+
+.save-button:hover {
+    background-color: #e86d15; /* Darker orange */
+    box-shadow: 0 4px 8px rgba(255, 127, 39, 0.3);
+}
+
+.delete-confirm-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.2);
+}
+
+.delete-confirm-button:hover {
+    background-color: #c82333;
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.close-view-button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 4px rgba(108, 117, 125, 0.2);
+}
+
+.close-view-button:hover {
+    background-color: #5a6268;
+    box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+}
+
+/* Estilos para visualização de detalhes */
+.view-group {
+    margin-bottom: 1.2rem;
+}
+
+.view-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.3rem;
+}
+
+.view-value {
+    font-size: 1rem;
+    color: #212529;
+    margin: 0;
+}
+
+.members-view-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.member-view-item {
+    background-color: #e9ecef;
+    border-radius: 16px;
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Estilos para modal de exclusão */
+.delete-modal {
+    max-width: 450px;
+}
+
+.delete-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.warning-icon {
+    font-size: 2rem;
+    color: #ffc107;
+}
+
+.delete-details {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.delete-details p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+/* Estilos para o modal de configurações da conta */
+.config-modal {
+  width: 500px;
+  max-width: 90vw;
+  
+  .modal-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-divider {
+    position: relative;
+    text-align: center;
+    margin: 1.5rem 0;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 1px;
+      background: #eee;
+    }
+    
+    span {
+      position: relative;
+      background: white;
+      padding: 0 10px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  }
+  
+  .form-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .save-btn {
+    background: linear-gradient(135deg, #ff7f27, #ffc107);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover {
+      background: linear-gradient(135deg, darken(#ff7f27, 5%), darken(#ffc107, 5%));
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(255, 127, 39, 0.2);
+    }
+    
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+  
+  .danger-zone {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    
+    h3 {
+      color: #dc3545;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .delete-account-btn {
+      background-color: rgba(#dc3545, 0.1);
+      color: #dc3545;
+      border: 1px solid rgba(#dc3545, 0.2);
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      
+      &:hover {
+        background-color: rgba(#dc3545, 0.15);
+        border-color: rgba(#dc3545, 0.3);
+      }
+    }
+    
+    .delete-confirm {
+      background-color: rgba(#dc3545, 0.05);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1rem;
+      
+      p {
+        margin-top: 0;
+        color: #555;
+        font-size: 0.95rem;
+      }
+      
+      .delete-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 1rem;
+        
+        .confirm-delete-btn {
+          background-color: #dc3545;
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.2s;
+          
+          &:hover {
+            background-color: darken(#dc3545, 10%);
+          }
+          
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+        }
+        
+        .cancel-delete-btn {
+          background-color: #f8f9fa;
+          color: #333;
+          border: 1px solid #ddd;
+          padding: 8px 16px;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.2s;
+          
+          &:hover {
+            background-color: darken(#f8f9fa, 5%);
+          }
+          
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+  
+  .error-message {
+    background-color: rgba(#dc3545, 0.1);
+    color: #dc3545;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+  
+  .success-message {
+    background-color: rgba(#28a745, 0.1);
+    color: #28a745;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+}

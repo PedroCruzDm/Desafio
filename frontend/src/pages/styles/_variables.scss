@@ -1,13 +1,17 @@
-$cor-primary: #ffd900;
-$cor-secondary: #ff6f00;
-$cor-tertiary: #ff3d00;
+$cor-primary: #ffc107; // Yellow for secondary actions
+$cor-secondary: #ff7f27; // Orange for active elements
+$cor-tertiary: #ff5722; // Deeper orange for emphasis
 
-$cor-text: #ffffff;
-$cor-text-dark: #000000;
+$cor-text: #333333; // Dark text on light backgrounds
+$cor-text-dark: #ffffff; // Light text on dark backgrounds
 
-$cor-background: #121212;
-$cor-background-light: #ebebeb;
-$cor-background-secondary: #1e1e1e;
+$cor-background: #ffffff; // White background
+$cor-background-light: #f9fafb; // Light gray background
+$cor-background-secondary: #f5f5f5; // Secondary background
+
+// Keep original danger/view colors
+$danger-red: #dc3545; // Red for delete actions
+$view-blue: #17a2b8; // Blue for view actions
 
 $font-family: 'Roboto', sans-serif;
 

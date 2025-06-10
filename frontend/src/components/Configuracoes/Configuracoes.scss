@@ -1,0 +1,272 @@
+@import "../../pages/styles/_variables.scss";
+
+.configuracoes-container {
+  width: 100%;
+  max-width: 100%;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.configuracoes-header {
+  margin-bottom: 2rem;
+  
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, $cor-secondary, darken($cor-secondary, 15%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+  
+  .configuracoes-subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+.configuracoes-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  
+  @media (min-width: 992px) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.configuracoes-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  border: 1px solid #f0f0f0;
+  animation: fadeIn 0.5s ease-out forwards;
+  
+  .card-header {
+    margin-bottom: 1.5rem;
+    
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #333;
+    }
+    
+    p {
+      color: #666;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  
+  label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #444;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    
+    &:focus {
+      outline: none;
+      border-color: $cor-secondary;
+      box-shadow: 0 0 0 3px rgba($cor-secondary, 0.1);
+    }
+  }
+}
+
+.form-divider {
+  position: relative;
+  text-align: center;
+  margin: 2rem 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #eee;
+  }
+  
+  span {
+    position: relative;
+    background: white;
+    padding: 0 1rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, $cor-secondary, darken($cor-secondary, 10%));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba($cor-secondary, 0.2);
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.danger-zone-card {
+  background-color: #fff;
+  border: 1px solid rgba($danger-red, 0.1);
+  
+  .card-header {
+    h3 {
+      color: $danger-red;
+    }
+  }
+}
+
+.delete-account-section {
+  p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.delete-account-btn {
+  background-color: rgba($danger-red, 0.1);
+  color: $danger-red;
+  border: 1px solid rgba($danger-red, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  
+  &:hover {
+    background-color: rgba($danger-red, 0.15);
+    border-color: rgba($danger-red, 0.3);
+  }
+}
+
+.delete-confirm {
+  background-color: rgba($danger-red, 0.05);
+  border-radius: 6px;
+  padding: 1.5rem;
+  
+  .warning-text {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .delete-actions {
+    display: flex;
+    gap: 1rem;
+    
+    .confirm-delete-btn {
+      background-color: $danger-red;
+      color: white;
+      border: none;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+      
+      &:hover {
+        background-color: darken($danger-red, 10%);
+      }
+      
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+    }
+    
+    .cancel-delete-btn {
+      background-color: #f8f9fa;
+      color: #333;
+      border: 1px solid #ddd;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+      
+      &:hover {
+        background-color: darken(#f8f9fa, 5%);
+      }
+      
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.error-message {
+  background-color: rgba($danger-red, 0.1);
+  color: $danger-red;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.success-message {
+  background-color: rgba(#28a745, 0.1);
+  color: #28a745;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.configuracoes-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  color: #888;
+  font-size: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

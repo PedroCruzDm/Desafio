@@ -1,0 +1,210 @@
+
+// Estilos adicionais para formulários nos modais
+.form-group {
+  margin-bottom: 1.2rem;
+  
+  label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
+  }
+  
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    
+    &:focus {
+      border-color: #1976d2;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+    }
+    
+    &::placeholder {
+      color: #adb5bd;
+    }
+  }
+  
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  input[type="color"] {
+    width: 45px;
+    height: 45px;
+    padding: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+// Layout para inputs em linha
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  
+  .form-group {
+    flex: 1;
+    min-width: 180px;
+  }
+}
+
+// Input de cor com preview
+.color-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  
+  label {
+    flex: 1;
+  }
+  
+  .color-preview {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+  }
+}
+
+// Mensagens de erro
+.input-error {
+  border-color: #dc3545 !important;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+// Estilos para inputs específicos
+input[type="datetime-local"] {
+  font-family: inherit;
+  
+  &::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// Estilização dos selects
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23343a40' d='M6 8.825L1.763 4.5 3 3.245 6 6.295l3-3.05L10.237 4.5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 12px;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+// Estilos para estados de hover e foco
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #adb5bd;
+}
+
+// Checkbox customizado
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  
+  input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  
+  label {
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+}
+
+// Botões de ação em modais com animação
+.modal-footer {
+  .save-button,
+  .cancel-button {
+    position: relative;
+    overflow: hidden;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.3);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+    
+    &:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+  }
+}
+
+// Animação de ripple para botões
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+// Adicionando responsividade para telas menores
+@media (max-width: 576px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+    
+    .form-group {
+      width: 100%;
+    }
+  }
+  
+  .modal-container {
+    width: 90vw !important;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.5rem !important;
+  }
+  
+  .modal-footer {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+    
+    button {
+      width: 100%;
+    }
+  }
+}

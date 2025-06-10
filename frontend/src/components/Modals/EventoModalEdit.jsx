@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style/Modals.scss";
+import "./style/FormModals.scss";
 
 const EventoModalEdit = ({ isOpen, onClose, onEditar, evento }) => {
   const [nome, setNome] = useState("");
@@ -83,73 +84,106 @@ const EventoModalEdit = ({ isOpen, onClose, onEditar, evento }) => {
   const today = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(
     now.getDate()
   )}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
-
   if (!isOpen || !evento) return null;
 
   return (
-    <div className="modal_event" onClick={(e) => e.stopPropagation()}>
-      <div className="modal_event_container">
-        <div className="modal_event_header">
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
           <h2>Editar Evento</h2>
-          <button onClick={onClose} className="modal_event_close">
-            X
+          <button onClick={onClose} className="close-button">
+            &times;
           </button>
         </div>
 
-        <div className="modal_event_body">
-          <p>Nome do Evento:</p>
-          <input value={nome} onChange={(e) => setNome(e.target.value)} required />
-
-          <p>Quantidade de Equipe:</p>
-          <input
-            type="number"
-            value={equipe}
-            onChange={(e) => setEquipe(e.target.value)}
-            required
-          />
-
-          <p>Status:</p>
-          <select value={status} onChange={(e) => setStatus(e.target.value)}>
-            <option value="pendente">Pendente</option>
-            <option value="concluido">Concluído</option>
-            <option value="cancelado">Cancelado</option>
-          </select>
-
-          <p>Data Inicial:</p>
-          <input
-            type="datetime-local"
-            value={dataInicial}
-            onChange={(e) => setDataInicial(e.target.value)}
-            required
-          />
-          
-          <p>Data Final:</p>
-          <input
-            type="datetime-local"
-            value={dataFinal}
-            onChange={(e) => setDataFinal(e.target.value)}
-            required
-            min={dataInicial || today}
-          />
-
-          <p>Cor:</p>
-          <input type="color" value={cor} onChange={(e) => setCor(e.target.value)} />
-
-          <p>Descrição:</p>
-          <textarea 
-            value={descricao} 
-            onChange={(e) => setDescricao(e.target.value)}
-            style={{ width: "100%", minHeight: "100px", resize: "vertical" }}
-          />
-
-          <div className="modal_event_buttons">
-            <button onClick={handleSave} className="modal_event_save">
-              Atualizar
-            </button>
-            <button onClick={onClose} className="modal_event_cancel">
-              Cancelar
-            </button>
+        <div className="modal-body">
+          <div className="form-group">
+            <label>Nome do Evento</label>
+            <input 
+              value={nome} 
+              onChange={(e) => setNome(e.target.value)} 
+              placeholder="Digite o nome do evento"
+              className={!nome.trim() ? "input-error" : ""}
+              required 
+            />
+            {!nome.trim() && <div className="error-message">Nome é obrigatório</div>}
           </div>
+
+          <div className="form-group">
+            <label>Quantidade de Equipe</label>
+            <input
+              type="number"
+              value={equipe}
+              onChange={(e) => setEquipe(e.target.value)}
+              placeholder="0"
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Status</label>
+            <select value={status} onChange={(e) => setStatus(e.target.value)}>
+              <option value="pendente">Pendente</option>
+              <option value="concluido">Concluído</option>
+              <option value="cancelado">Cancelado</option>
+              <option value="adiado">Adiado</option>
+            </select>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label>Data Inicial</label>
+              <input
+                type="datetime-local"
+                value={dataInicial}
+                onChange={(e) => setDataInicial(e.target.value)}
+                className={!dataInicial ? "input-error" : ""}
+                required
+              />
+              {!dataInicial && <div className="error-message">Data inicial obrigatória</div>}
+            </div>
+
+            <div className="form-group">
+              <label>Data Final</label>
+              <input
+                type="datetime-local"
+                value={dataFinal}
+                onChange={(e) => setDataFinal(e.target.value)}
+                className={!dataFinal ? "input-error" : ""}
+                required
+                min={dataInicial || today}
+              />
+              {!dataFinal && <div className="error-message">Data final obrigatória</div>}
+            </div>
+          </div>
+
+          <div className="form-group color-input-group">
+            <label>Cor do Evento</label>
+            <div className="color-preview" style={{ backgroundColor: cor }}></div>
+            <input 
+              type="color" 
+              value={cor} 
+              onChange={(e) => setCor(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Descrição</label>
+            <textarea 
+              value={descricao} 
+              onChange={(e) => setDescricao(e.target.value)}
+              placeholder="Descreva os detalhes do evento"
+              rows="4"
+            />
+          </div>
+        </div>
+
+        <div className="modal-footer">
+          <button onClick={onClose} className="cancel-button">
+            Cancelar
+          </button>
+          <button onClick={handleSave} className="save-button">
+            Atualizar Evento
+          </button>
         </div>
       </div>
     </div>

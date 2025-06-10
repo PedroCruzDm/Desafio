@@ -65,9 +65,9 @@ app.get('/api/usuarios/me', verificarToken, (req, res) => {
 const eventosRoutes = require('./src/routes/eventos');
 app.use('/api/eventos', eventosRoutes);
 
-// Equipes
-const equipesRoutes = require('./src/routes/equipes');
-app.use('/api/equipes', equipesRoutes);
+// Equipes com armazenamento JSON
+const equipesJsonRoutes = require('./src/routes/equipes_json');
+app.use('/api/equipes_json', equipesJsonRoutes);
 
 app.post('/api/eventos/cadastrar', (req, res) => {
   const { usuario_id, nome, equipe, status, data, cor, descricao } = req.body;
