@@ -1,1 +1,181 @@
 @import './variables';
+
+// Variáveis
+$primary-color: #ff5722;
+$primary-dark: #e64a19;
+$primary-light: #ff8a65;
+$white: #ffffff;
+$gray-900: #212121;
+$shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+$shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+$transition: all 0.3s ease;
+
+// Estilos globais
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Container principal
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $primary-light 0%, $primary-dark 100%);
+  padding: 2rem;
+  text-align: center;
+  color: $white;
+  overflow: hidden;
+  position: relative;
+  
+  // Adicionar efeito de partículas ao fundo
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-opacity='0.1' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3C/svg%3E") center/cover no-repeat;
+    opacity: 0.1;
+    z-index: 0;
+  }
+  
+  // Estilo para o título
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeInDown 0.8s ease;
+    
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
+  }
+  
+  // Estilo para o subtítulo
+  p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease 0.2s both;
+    
+    @media (max-width: 768px) {
+      font-size: 1.125rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+  
+  // Estilo para os botões
+  .home-buttons {
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease 0.4s both;
+    
+    @media (max-width: 480px) {
+      flex-direction: column;
+      width: 100%;
+      max-width: 250px;
+    }
+    
+    // Estilo comum para os botões
+    button {
+      padding: 1rem 2.5rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: $transition;
+      border: none;
+      box-shadow: $shadow;
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: $shadow-hover;
+      }
+      
+      &:active {
+        transform: translateY(-1px);
+      }
+      
+      @media (max-width: 480px) {
+        width: 100%;
+        padding: 0.875rem 2rem;
+      }
+    }
+    
+    // Primeiro botão (Cadastro)
+    button:first-child {
+      background-color: $white;
+      color: $primary-color;
+      
+      &:hover {
+        background-color: rgba($white, 0.9);
+      }
+    }
+    
+    // Segundo botão (Login)
+    button:last-child {
+      background-color: transparent;
+      color: $white;
+      border: 2px solid $white;
+      
+      &:hover {
+        background-color: rgba($white, 0.1);
+      }
+    }
+  }
+}
+
+// Animações
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

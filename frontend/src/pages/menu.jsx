@@ -25,7 +25,7 @@ const Sidebar = ({ usuario, onLogout, onMenuClick, onMenuDoubleClick, activeItem
     return (
         <aside className="sidebar">
             <div className="sidebar__brand">
-                <h2>EventManager</h2>
+                <h2>Fash Eventos</h2>
                 <span>Sistema de Gerenciamento de Eventos</span>
             </div>
             

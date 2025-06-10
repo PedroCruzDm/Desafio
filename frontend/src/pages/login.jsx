@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import './styles/login.scss';
 
 export const Login = () => {
     const [email, setEmail] = useState("");
@@ -22,8 +23,8 @@ export const Login = () => {
 
             if (response.ok) {
                 localStorage.setItem("token", data.token);
-                localStorage.setItem("usuario", JSON.stringify(data.usuario)); // salva os dados do usuário
-                navigate("/eventos");
+                localStorage.setItem("usuario", JSON.stringify(data.usuario));
+                navigate("/menu"); // Alterado de "/eventos" para "/menu"
             } else {
                 alert(data.erro || "Erro no login");
             }
@@ -34,30 +35,57 @@ export const Login = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ maxWidth: 300, margin: "0 auto" }}>
-            <h2>Login</h2>
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    required
-                />
+        <div className="login-container">
+            {/* Botão de voltar */}
+            <button 
+                className="back-button" 
+                onClick={() => navigate('/')}
+                aria-label="Voltar para página inicial"
+            >
+                <i className="fas fa-arrow-left"></i>
+                <span>Voltar</span>
+            </button>
+            
+            <div className="login-card">
+                <div className="login-header">
+                    <h2>Login</h2>
+                    <p>Entre para acessar sua conta</p>
+                </div>
+                
+                <form onSubmit={handleSubmit} className="login-form">
+                    <div className="form-group">
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            required
+                            className="form-control"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Senha:</label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            required
+                            autoComplete="current-password"
+                            className="form-control"
+                        />
+                    </div>
+                    <button type="submit" className="login-button">Entrar</button>
+                </form>
+                
+                <div className="login-footer">
+                    <p>Ainda não tem uma conta?</p>
+                    <Link to="/cadastro" className="register-link">
+                        Cadastre-se agora
+                    </Link>
+                </div>
             </div>
-            <div>
-                <label htmlFor="password">Senha:</label>
-                <input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    required
-                    autoComplete="current-password"
-                />
-            </div>
-            <button type="submit">Entrar</button>
-        </form>
+        </div>
     );
 };
