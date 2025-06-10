@@ -1,0 +1,694 @@
+$primary-color: #ff5722;
+$primary-dark: #e64a19;
+$primary-light: #ff8a65;
+$secondary-color: #4caf50;
+$error-color: #f44336;
+$white: #ffffff;
+$gray-50: #fafafa;
+$gray-100: #f5f5f5;
+$gray-200: #eeeeee;
+$gray-300: #e0e0e0;
+$gray-400: #bdbdbd;
+$gray-500: #9e9e9e;
+$gray-700: #616161;
+$gray-900: #212121;
+$shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+// Container principal
+.equipes-container {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  &.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba($primary-color, 0.3);
+    border-radius: 50%;
+    border-top-color: $primary-color;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 1rem;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+}
+
+// Cabeçalho
+.equipes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  
+  h2 {
+    color: $gray-900;
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+  
+  .btn-novo {
+    background-color: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: $transition;
+    
+    &:hover {
+      background-color: $primary-dark;
+      transform: translateY(-2px);
+      box-shadow: $shadow;
+    }
+    
+    i {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Grid de equipes
+.equipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+// Card de equipe
+.equipe-card {
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: $shadow;
+  overflow: hidden;
+  transition: $transition;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  }
+  
+  .equipe-card-header {
+    padding: 1.5rem;
+    background-color: $primary-light;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0;
+      word-break: break-word;
+    }
+    
+    .equipe-actions {
+      display: flex;
+      gap: 0.5rem;
+      
+      .btn-icon {
+        background: rgba($white, 0.2);
+        color: $white;
+        border: none;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: $transition;
+        
+        &:hover {
+          background: rgba($white, 0.3);
+        }
+        
+        &.delete:hover {
+          background: $error-color;
+        }
+        
+        i {
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+  
+  .equipe-card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    
+    .descricao {
+      color: $gray-700;
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      min-height: 60px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    
+    .equipe-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: $gray-700;
+        
+        i {
+          color: $primary-color;
+          font-size: 0.9rem;
+          width: 16px;
+        }
+      }
+    }
+  }
+  
+  .equipe-card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid $gray-200;
+    
+    .btn-ver-mais {
+      width: 100%;
+      padding: 0.6rem;
+      background-color: transparent;
+      color: $primary-color;
+      border: 1px solid $primary-color;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: $transition;
+      
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+      }
+    }
+  }
+}
+
+// Estado vazio
+.empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: $shadow;
+  margin-top: 2rem;
+  
+  i {
+    font-size: 3rem;
+    color: $gray-400;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: $gray-700;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn-secundario {
+    background-color: transparent;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition;
+    
+    &:hover {
+      background-color: rgba($primary-color, 0.05);
+    }
+  }
+}
+
+// Mensagem de erro
+.error-message {
+  padding: 1rem;
+  background-color: rgba($error-color, 0.1);
+  color: darken($error-color, 20%);
+  border-left: 4px solid $error-color;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+// Modal
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: $white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  
+  &.modal-large {
+    max-width: 800px;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: $gray-500;
+    z-index: 100; // Aumentando o z-index para garantir que fique acima de outros elementos
+    width: 30px;  // Definindo largura específica
+    height: 30px; // Definindo altura específica
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 0;
+    
+    &:hover {
+      color: $error-color;
+      background-color: rgba($gray-200, 0.5);
+    }
+  }
+}
+
+// Formulário de equipe
+.equipe-form {
+  padding: 2rem;
+  
+  h3 {
+    color: $gray-900;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    
+    label {
+      display: block;
+      font-size: 0.95rem;
+      color: $gray-700;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid $gray-300;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: $transition;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.15);
+      }
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    
+    button {
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: $transition;
+      
+      &.btn-secundario {
+        background-color: $white;
+        color: $gray-700;
+        border: 1px solid $gray-300;
+        
+        &:hover {
+          background-color: $gray-100;
+        }
+      }
+      
+      &.btn-primario {
+        background-color: $primary-color;
+        color: $white;
+        border: none;
+        
+        &:hover {
+          background-color: $primary-dark;
+        }
+      }
+    }
+  }
+}
+
+// Detalhes da equipe
+.equipe-detalhes {
+  padding: 2rem;
+  
+  .equipe-detalhes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-right: 2rem; // Adicionando padding à direita para evitar sobreposição com o botão de fechar
+    
+    h3 {
+      color: $gray-900;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .btn-editar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: transparent;
+      color: $primary-color;
+      border: 1px solid $primary-color;
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: $transition;
+      
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+      }
+    }
+  }
+  
+  .equipe-info-detalhada {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .info-section {
+      h4 {
+        color: $gray-900;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+        border-bottom: 2px solid $primary-light;
+        padding-bottom: 0.5rem;
+      }
+      
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        
+        .info-item {
+          .label {
+            display: block;
+            font-size: 0.85rem;
+            color: $gray-500;
+            margin-bottom: 0.25rem;
+          }
+          
+          .value {
+            font-size: 0.95rem;
+            color: $gray-900;
+            font-weight: 500;
+          }
+        }
+      }
+      
+      .descricao-box {
+        background-color: $gray-50;
+        padding: 1rem;
+        border-radius: 6px;
+        
+        .label {
+          display: block;
+          font-size: 0.85rem;
+          color: $gray-500;
+          margin-bottom: 0.5rem;
+        }
+        
+        p {
+          font-size: 0.95rem;
+          color: $gray-700;
+          margin: 0;
+        }
+      }
+    }
+    
+    .membros-section {
+      h4 {
+        color: $gray-900;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+        border-bottom: 2px solid $primary-light;
+        padding-bottom: 0.5rem;
+      }
+      
+      .membros-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        
+        .btn-adicionar {
+          background-color: $secondary-color;
+          color: $white;
+          border: none;
+          border-radius: 6px;
+          padding: 0.5rem 1rem;
+          font-size: 0.85rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: $transition;
+          
+          &:hover {
+            background-color: darken($secondary-color, 10%);
+          }
+          
+          &:disabled {
+            background-color: $gray-400;
+            cursor: not-allowed;
+          }
+        }
+      }
+      
+      .add-membro-form {
+        background-color: $gray-50;
+        padding: 1rem;
+        border-radius: 6px;
+        margin-bottom: 1.25rem;
+        
+        .form-row {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          margin-bottom: 1rem;
+          
+          @media (min-width: 500px) {
+            grid-template-columns: 1fr 1fr;
+          }
+          
+          .form-group {
+            margin-bottom: 0;
+            
+            label {
+              display: block;
+              font-size: 0.85rem;
+              color: $gray-700;
+              margin-bottom: 0.35rem;
+            }
+            
+            input {
+              width: 100%;
+              padding: 0.65rem 0.85rem;
+              border: 1px solid $gray-300;
+              border-radius: 4px;
+              font-size: 0.95rem;
+              
+              &:focus {
+                outline: none;
+                border-color: $primary-color;
+                box-shadow: 0 0 0 3px rgba($primary-color, 0.15);
+              }
+              
+              &:disabled {
+                background-color: $gray-200;
+                cursor: not-allowed;
+              }
+            }
+          }
+        }
+        
+        .btn-confirmar {
+          background-color: $secondary-color;
+          color: $white;
+          border: none;
+          border-radius: 4px;
+          padding: 0.5rem 1rem;
+          font-size: 0.85rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: $transition;
+          
+          &:hover {
+            background-color: darken($secondary-color, 10%);
+          }
+          
+          &:disabled {
+            background-color: $gray-400;
+            cursor: not-allowed;
+          }
+        }
+      }
+      
+      .no-membros {
+        padding: 2rem;
+        text-align: center;
+        background-color: $gray-50;
+        border-radius: 6px;
+        
+        p {
+          color: $gray-500;
+          font-size: 0.95rem;
+          margin: 0;
+        }
+      }
+      
+      .membros-list {
+        .membro-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.85rem;
+          border-bottom: 1px solid $gray-200;
+          
+          &:last-child {
+            border-bottom: none;
+          }
+          
+          .membro-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            
+            .membro-avatar {
+              width: 40px;
+              height: 40px;
+              background-color: $primary-light;
+              color: $white;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.1rem;
+              font-weight: 600;
+            }
+            
+            .membro-details {
+              h5 {
+                margin: 0 0 0.2rem;
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: $gray-900;
+              }
+              
+              p {
+                margin: 0;
+                font-size: 0.85rem;
+                color: $gray-500;
+              }
+            }
+          }
+          
+          .btn-remover {
+            background-color: transparent;
+            color: $gray-500;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: $transition;
+            
+            &:hover {
+              background-color: rgba($error-color, 0.1);
+              color: $error-color;
+            }
+            
+            &:disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+            }
+            
+            i {
+              font-size: 0.85rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

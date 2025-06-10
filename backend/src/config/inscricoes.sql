@@ -1,4 +1,3 @@
--- Tabela para inscrições em eventos e equipes
 CREATE TABLE IF NOT EXISTS inscricoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL,
@@ -13,7 +12,6 @@ CREATE TABLE IF NOT EXISTS inscricoes (
     FOREIGN KEY (equipe_id) REFERENCES equipes(id) ON DELETE CASCADE
 );
 
--- Índices para melhorar performance
 CREATE INDEX IF NOT EXISTS idx_inscricoes_usuario ON inscricoes(usuario_id);
 CREATE INDEX IF NOT EXISTS idx_inscricoes_evento ON inscricoes(evento_id);
 CREATE INDEX IF NOT EXISTS idx_inscricoes_equipe ON inscricoes(equipe_id);

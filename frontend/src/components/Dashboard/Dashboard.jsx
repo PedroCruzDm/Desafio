@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Dashboard.css";
+import "./Dashboard.scss"; // Corrigindo a extensão de .css para .scss
 import EquipeModalAdd from "../Modals/EquipeModalAdd";
 
 const Dashboard = () => {

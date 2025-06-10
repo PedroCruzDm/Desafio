@@ -1,4 +1,3 @@
--- Tabela para equipes
 CREATE TABLE IF NOT EXISTS equipes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -9,7 +8,6 @@ CREATE TABLE IF NOT EXISTS equipes (
     atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Tabela para membros das equipes
 CREATE TABLE IF NOT EXISTS membros_equipe (
     id INT AUTO_INCREMENT PRIMARY KEY,
     equipe_id INT NOT NULL,
@@ -17,6 +15,5 @@ CREATE TABLE IF NOT EXISTS membros_equipe (
     FOREIGN KEY (equipe_id) REFERENCES equipes(id) ON DELETE CASCADE
 );
 
--- Índices para melhorar performance
 CREATE INDEX IF NOT EXISTS idx_equipe_nome ON equipes(nome);
 CREATE INDEX IF NOT EXISTS idx_membros_equipe ON membros_equipe(equipe_id);

@@ -1,0 +1,148 @@
+@import './styles/mixins.scss';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  
+  @include md {
+    font-size: 15px;
+  }
+  
+  @include xs {
+    font-size: 14px;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+// Estilos de acessibilidade
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 2px solid #ff7f27;
+  outline-offset: 2px;
+}
+
+// Tipografia responsiva
+h1 {
+  font-size: 2.5rem;
+  
+  @include md {
+    font-size: 2.25rem;
+  }
+  
+  @include sm {
+    font-size: 2rem;
+  }
+  
+  @include xs {
+    font-size: 1.75rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  
+  @include md {
+    font-size: 1.75rem;
+  }
+  
+  @include sm {
+    font-size: 1.5rem;
+  }
+  
+  @include xs {
+    font-size: 1.35rem;
+  }
+}
+
+h3 {
+  font-size: 1.75rem;
+  
+  @include md {
+    font-size: 1.5rem;
+  }
+  
+  @include sm {
+    font-size: 1.35rem;
+  }
+  
+  @include xs {
+    font-size: 1.25rem;
+  }
+}
+
+h4 {
+  font-size: 1.5rem;
+  
+  @include md {
+    font-size: 1.35rem;
+  }
+  
+  @include sm {
+    font-size: 1.25rem;
+  }
+  
+  @include xs {
+    font-size: 1.1rem;
+  }
+}
+
+// Media queries para melhor visualização em dispositivos móveis
+@include xs {
+  // Aumentar botões e áreas clicáveis em dispositivos móveis
+  button, 
+  .btn,
+  a.btn,
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px; // Padrão de acessibilidade para áreas tocáveis
+    padding: 0.5rem 1rem;
+  }
+  
+  // Melhorar espaçamento em formulários
+  form {
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    label {
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+    
+    input, 
+    select, 
+    textarea {
+      padding: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// Ajustes para impressão
+@media print {
+  body {
+    font-size: 12pt;
+    background: white;
+    color: black;
+  }
+  
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}

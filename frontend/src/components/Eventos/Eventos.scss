@@ -1,3 +1,4 @@
+@import '../../styles/mixins.scss';
 
 .eventos {
   &-container {
@@ -187,6 +188,216 @@
       font-size: 1.1rem;
       margin: 0;
     }
+  }
+}
+
+// Tabela de eventos responsiva
+.eventos-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  -webkit-overflow-scrolling: touch; // Melhora a rolagem em dispositivos iOS
+  
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 4px;
+    
+    &:hover {
+      background: #ccc;
+    }
+  }
+}
+
+.eventos-table {
+  width: 100%;
+  min-width: 750px; // Garante que a tabela não fique muito espremida
+  border-collapse: collapse;
+  
+  th, td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eeeeee;
+  }
+  
+  th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    white-space: nowrap;
+  }
+  
+  td {
+    vertical-align: middle;
+  }
+  
+  .evento-title {
+    font-weight: 500;
+    color: #212529;
+    
+    @include md {
+      max-width: 150px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  
+  .evento-description {
+    color: #6c757d;
+    font-size: 0.9rem;
+    
+    @include md {
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  
+  .evento-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    
+    button {
+      padding: 0.4rem;
+      border: none;
+      background: none;
+      color: #6c757d;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background-color: #f8f9fa;
+        color: #212529;
+      }
+      
+      &.edit:hover {
+        color: #007bff;
+      }
+      
+      &.delete:hover {
+        color: #dc3545;
+      }
+      
+      &.view:hover {
+        color: #28a745;
+      }
+    }
+  }
+}
+
+// Versão responsiva da lista para telas muito pequenas
+.eventos-list-mobile {
+  display: none;
+  
+  @include xs {
+    display: block;
+  }
+  
+  .evento-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    
+    .evento-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      
+      .evento-title {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #212529;
+        margin: 0;
+      }
+      
+      .evento-status {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 20px;
+        background-color: #e9ecef;
+        color: #495057;
+        
+        &.ativo {
+          background-color: rgba(40, 167, 69, 0.1);
+          color: #28a745;
+        }
+        
+        &.inativo {
+          background-color: rgba(220, 53, 69, 0.1);
+          color: #dc3545;
+        }
+      }
+    }
+    
+    .evento-info {
+      margin-bottom: 0.75rem;
+      
+      p {
+        margin: 0.25rem 0;
+        font-size: 0.9rem;
+        color: #6c757d;
+        
+        strong {
+          color: #495057;
+          font-weight: 500;
+        }
+      }
+    }
+    
+    .evento-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      
+      button {
+        padding: 0.4rem 0.7rem;
+        border: none;
+        background-color: #f8f9fa;
+        color: #6c757d;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          background-color: #e9ecef;
+        }
+        
+        &.edit:hover {
+          color: #007bff;
+        }
+        
+        &.delete:hover {
+          color: #dc3545;
+        }
+        
+        &.view:hover {
+          color: #28a745;
+        }
+      }
+    }
+  }
+}
+
+// Esconde a tabela e mostra a lista móvel em telas muito pequenas
+@include xs {
+  .eventos-table-container {
+    display: none;
   }
 }
 

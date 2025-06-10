@@ -1,0 +1,160 @@
+@import './styles/mixins.scss';
+
+.App {
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  
+  @include sm {
+    height: 30vmin;
+  }
+  
+  @include xs {
+    height: 25vmin;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  @include flex(column, center, center);
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 1rem;
+  
+  @include md {
+    font-size: calc(8px + 2vmin);
+  }
+  
+  @include xs {
+    font-size: calc(6px + 2vmin);
+    padding: 0.5rem;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Estilos responsivos globais
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+// Classe container responsiva
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  
+  @include xl {
+    max-width: 1140px;
+  }
+  
+  @include lg {
+    max-width: 960px;
+  }
+  
+  @include md {
+    max-width: 720px;
+  }
+  
+  @include sm {
+    max-width: 540px;
+  }
+  
+  @include xs {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+// Melhorias de responsividade para formulários
+input, select, textarea, button {
+  max-width: 100%;
+  
+  @include xs {
+    font-size: 16px; // Evita zoom em campos de formulário no iOS
+  }
+}
+
+// Grid responsivo para qualquer layout de cards
+.responsive-grid {
+  @include grid(repeat(auto-fill, minmax(300px, 1fr)), 1rem);
+  
+  @include md {
+    @include grid(repeat(auto-fill, minmax(250px, 1fr)), 1rem);
+  }
+  
+  @include sm {
+    @include grid(repeat(auto-fill, minmax(200px, 1fr)), 0.75rem);
+  }
+  
+  @include xs {
+    @include grid(1fr, 0.75rem);
+  }
+}
+
+// Classes de utilidade para espaçamento responsivo
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 1.5rem; }
+.p-5 { padding: 3rem; }
+
+@include sm {
+  .mb-5 { margin-bottom: 2rem; }
+  .mt-5 { margin-top: 2rem; }
+  .p-5 { padding: 2rem; }
+}
+
+@include xs {
+  .mb-4 { margin-bottom: 1rem; }
+  .mb-5 { margin-bottom: 1.5rem; }
+  .mt-4 { margin-top: 1rem; }
+  .mt-5 { margin-top: 1.5rem; }
+  .p-4 { padding: 1rem; }
+  .p-5 { padding: 1.5rem; }
+}

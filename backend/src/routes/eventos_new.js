@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-// CREATE - Cadastrar evento
+// CREATE - evento
 router.post('/cadastrar', (req, res) => {
   const { usuario_id, nome, equipe, status, data_inicial, data_final, cor, descricao } = req.body;
 
